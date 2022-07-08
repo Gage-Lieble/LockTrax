@@ -1,0 +1,14 @@
+{% extends 'search_temp/base.html' %}
+{% block content %}
+<div id="form-cont">
+<form action="{% url 'search_locktrax:results' %}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Search</button>
+</form>
+</div>
+
+
+
+
+{% endblock %}

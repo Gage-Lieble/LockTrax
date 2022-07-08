@@ -1,0 +1,59 @@
+/* BASE */
+body{
+    font-family: 'futura';
+}
+#brand-logo{
+    width: 45px;
+}
+
+/* --- INDEX --- */
+
+#form-cont>form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-cont>form>input[type=text]{
+    width: 75%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+/* #form-cont>form>input[type=text]:focus{
+    border:10px solid #0096D6 !important;
+    
+} */
+/* --- RESULT PAGE --- */
+#result-boxes{
+    width: 85%;
+    background-color: blue;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    font-family: 'futura';
+}
+
+.mugshot>img{
+    border-radius: 100%;
+
+}
+
+.full-name{
+    color: white;
+    font-size: 10px;
+}
+
+#inner-details{
+    color: white;
+    font-size: 7px;
+}
+
+@font-face {
+    font-family: 'futura';
+    src: local('futura'), url('/static/fonts/futura.ttf') format("truetype");
+}
+
+/* BLUE : 0096D6 */

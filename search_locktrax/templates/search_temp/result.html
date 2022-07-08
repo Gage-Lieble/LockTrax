@@ -1,0 +1,19 @@
+{% extends 'search_temp/base.html' %}
+{% block content %}
+
+    
+    {% for key, value in result.items %}
+    
+            <div id="result-boxes">
+            <div class="mugshot"><img src="{{value.6}}" alt="mugshot"></div>
+            <div id="inner-details">
+            <div class="full-name"><h1>{{value.0}}</h1></div>
+            <div class="location"><h1>{{value.7}}</h1></div>
+            <div class="date"><h1>{{value.9}}</h1></div>
+            </div>
+            </div>
+    {% endfor %}
+        
+  
+        
+{% endblock %}
