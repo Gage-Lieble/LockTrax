@@ -34,10 +34,10 @@ def results(request):
         index += 1
     first_name = request.POST['first']
     last_name = request.POST['last']
-    print(sources)
+    
     # Finds all results in each county
     result = []
-    count = 0
+    
     for places in counties:
         county = places
         search_link = f'http://www.jailbase.com/api/1/search/?source_id={county}&last_name={last_name}&first_name={first_name}'
@@ -45,9 +45,9 @@ def results(request):
         with urllib.request.urlopen(request_site) as url:
             data = json.loads(url.read().decode())
         if data['records'] != []:
-            print(count)
+            
             result.append(data['records'])
-            count += 1
+    
     
     index = 0 
     full_details = {}

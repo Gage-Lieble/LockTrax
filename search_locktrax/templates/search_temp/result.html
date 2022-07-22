@@ -5,15 +5,41 @@
     {% for key, value in result.items %}
     
             <div id="result-boxes">
-            <div class="mugshot"><img src="{{value.6}}" alt="mugshot"></div>
-            <div id="inner-details">
-            <div class="full-name"><h1>{{value.0}}</h1></div>
-            <div class="location"><h1>{{value.7}}</h1></div>
-            <div class="date"><h1>{{value.9}}</h1></div>
+                <div class="mugshot"><img src="{{value.6}}" alt="mugshot"></div>
+                <div id="inner-details">
+                <div class="full-name"><h1>{{value.0}}</h1></div>
+                <div class="location"><h1>{{value.7}}</h1></div>
+                <div class="date"><h1>{{value.9}}</h1></div>
+                </div>
             </div>
+            <div class="toggle">V</div>
+            <div class="details-page" style="display: none;">
+                <div class="charges">{{value.8}}</div>
             </div>
+            
     {% endfor %}
+    <script>
+        let detailPage = document.querySelectorAll('.details-page');
+        let toggleDetails = document.getElementsByClassName('toggle');
         
-  
+        
+        for (let i = 0; i < toggleDetails.length; i++){
+            console.log(detailPage[1])
+            toggleDetails[i].addEventListener('click', function(){
+            if(detailPage[i].style.display === 'none'){
+                detailPage[i].style.display = 'block'
+            }
+            else {
+                detailPage[i].style.display = 'none'
+            }
+        })
+        }
+    
+            
+        
+    </script>
+    
+        
+
         
 {% endblock %}
