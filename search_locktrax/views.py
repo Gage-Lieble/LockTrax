@@ -52,22 +52,55 @@ def results(request):
     index = 0 
     full_details = {}
     while index < len(result[0]):
-        name = result[0][index]['name'] #0 
-        age = result[0][index]['details'][2][1] #1 
-        race = result[0][index]['details'][1][1] #2 
-        gender = result[0][index]['details'][0][1] #3 
-        height = result[0][index]['details'][3][1] #4 
-        weight = result[0][index]['details'][4][1] #5
-        mugshot = result[0][index]['mugshot'] #6 
-        county_in = result[0][index]['county_state'] #7
-        charges = result[0][index]['charges'] #8
-        date_booked = result[0][index]['book_date'] #9
+        name = result[0][index]['name'] #0
 
+        age = result[0][index]['details'][2][1] #1
+
+        try:
+            race = result[0][index]['details'][1][1] #2 
+        except IndexError:
+            race = 'N/A'
+
+        try:
+            gender = result[0][index]['details'][0][1] #3 
+        except IndexError:
+            gender = 'N/A'
+        try:
+            height = result[0][index]['details'][3][1] #4 
+        except IndexError:
+            height = 'N/A'
+        try:
+            weight = result[0][index]['details'][4][1] #5
+        except IndexError:
+            weight = 'N/A'
+        try:
+            mugshot = result[0][index]['mugshot'] #6 
+        except IndexError:
+            mugshot = 'N/A'
+        try:
+            county_in = result[0][index]['county_state'] #7
+        except IndexError:
+            county_in = 'N/A'
+        
+        try:
+            pre_split_charges = result[0][index]['charges'] #8
+            charges = []
+            for items in pre_split_charges: # Exctracts charge from other info
+                remove = '/'
+                stripped = items.split(remove)
+                charges.append(stripped[1])
+        except IndexError:
+            pre_split_charges = ['N/A']
+            charges = ['N/A']
+        try:
+            date_booked = result[0][index]['book_date'] #9
+        except IndexError:
+            date_booked = 'N/A'
         full_details[index] = [name, age, race, gender, height, weight, mugshot, county_in, charges, date_booked]
         index += 1
     context = {
         'result': full_details,
-        'sources': counties
+        'sources': counties,
     }
     return render(request, 'search_temp/result.html', context)
 

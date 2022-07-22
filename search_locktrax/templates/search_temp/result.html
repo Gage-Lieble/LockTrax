@@ -14,17 +14,29 @@
             </div>
             <div class="toggle">V</div>
             <div class="details-page" style="display: none;">
-                <div class="charges">{{value.8}}</div>
+                <div id="inmate-basic-info">
+                    <div class="age">Age:<br> {{value.1}}</div>
+                    <div class="gender">Sex: <br>{{value.3}}</div>
+                    <div class="race">Race: <br>{{value.2}}</div>
+                    <div class="height">Height: <br>{{value.4}}</div>
+                    <div class="weight">Weight: <br>{{value.5}} lbs</div>
+                </div>
+                <h1>Charges</h1>
+                
+                {% for charges in value.8 %}
+                <div class="charges">{{forloop.counter}}.{{charges}}</div>
+                {% endfor %}
+                    
+                
             </div>
             
     {% endfor %}
     <script>
-        let detailPage = document.querySelectorAll('.details-page');
+        let detailPage = document.querySelectorAll('.details-page'); 
         let toggleDetails = document.getElementsByClassName('toggle');
         
         
-        for (let i = 0; i < toggleDetails.length; i++){
-            console.log(detailPage[1])
+        for (let i = 0; i < toggleDetails.length; i++){ // DROP DOWN DETAILS
             toggleDetails[i].addEventListener('click', function(){
             if(detailPage[i].style.display === 'none'){
                 detailPage[i].style.display = 'block'
