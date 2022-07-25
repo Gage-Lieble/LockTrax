@@ -55,12 +55,17 @@ def results(request):
         name = result[0][index]['name'] #0
 
         age = result[0][index]['details'][2][1] #1
-
         try:
             race = result[0][index]['details'][1][1] #2 
+            if race == 'HISPANIC':
+                race = 'h'
+            elif race == 'asian':
+                race = 'a'
+            elif race.rstrip() == 'other':
+                race = 'N/A'
+            
         except IndexError:
             race = 'N/A'
-
         try:
             gender = result[0][index]['details'][0][1] #3 
         except IndexError:
@@ -98,6 +103,8 @@ def results(request):
             date_booked = 'N/A'
         full_details[index] = [name, age, race, gender, height, weight, mugshot, county_in, charges, date_booked]
         index += 1
+
+        
     context = {
         'result': full_details,
         'sources': counties,
